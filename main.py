@@ -8,30 +8,31 @@ import threading
 
 start_time = time.time()
 
-from relatorio_inadimplencia.py.ETL import ETL_relat_inadimp
+
 from conjuntos_informacoes.ETL import ETL_conj_info
 from ativacoes_placas.python.ETL import Load_relat_ativ_pend
+from relatorio_inadimplencia.py.ETL_inadimp import ETL_relat_inadimp
+from relatorio_inadimplencia.py.ETL_pagamentos import ETL_relat_pagam
 
 class Main:
-
-    def __init__(self) -> None:
-        pass
 
 
     def structure_routines():
 
         # Armazenando nome de cada rotina em uma variável
-        name_rout_1 = "RELATÓRIO DE INADIMPLÊNCIA"
+        name_rout_1 = "RELATÓRIO DE ATIVAÇÕES DE PLACAS"
         name_rout_2 = "RELATÓRIO DE INFORMAÇÕES DE CONJUNTOS"
-        name_rout_3 = "RELATÓRIO DE ATIVAÇÕES DE PLACAS"
+        name_rout_3 = "RELATÓRIO DE INADIMPLÊNCIA"
+        name_rout_4 = "RELATÓRIO DE PAGAMENTOS"
 
         
 
         # CRIANDO A LISTA COM TODAS AS ROTINAS EXISTENTES E SEUS REFERENTES NOMES IDENTIFICADORES
         routines = [
-            (lambda: ETL_relat_inadimp.ETL_inadimp(), name_rout_1),
+            (lambda: Load_relat_ativ_pend.load_files(), name_rout_1),
             (lambda: ETL_conj_info.ETL_conj(), name_rout_2),
-            (lambda: Load_relat_ativ_pend.load_files(), name_rout_3)
+            (lambda: ETL_relat_inadimp.ETL_inadimp(), name_rout_3),
+            (lambda: ETL_relat_pagam.ETL_pagam(), name_rout_4)
         ]
 
         return routines
@@ -70,7 +71,7 @@ class Main:
                 print('\n ----------------------------------------------------------------------------------')
 
                 # Iniciando o temporizador para execução automática
-                timer = threading.Timer(30, execute_all_routines)
+                timer = threading.Timer(1, execute_all_routines)
                 timer.start()
 
                 resposta = input('Qual Rotina você gostaria de executar? (digite apenas o número referente à rotina desejada): ')
