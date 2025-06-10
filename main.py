@@ -12,6 +12,7 @@ start_time = time.time()
 from conjuntos_informacoes.ETL import ETL_conj_info
 from relatorio_inadimplencia.py.ETL_inadimp import ETL_relat_inadimp
 from relatorio_inadimplencia.py.ETL_pagamentos import ETL_relat_pagam
+from relatorio_inadimplencia.py.ETL_ativos import ETL_relat_ativos
 
 class Main:
 
@@ -23,6 +24,7 @@ class Main:
         name_rout_1 = "RELATÓRIO DE INFORMAÇÕES DE CONJUNTOS"
         name_rout_2 = "RELATÓRIO DE INADIMPLÊNCIA"
         name_rout_3 = "RELATÓRIO DE PAGAMENTOS"
+        name_rout_4 = "RELATÓRIO DE CONJUNTOS E COOPERADOS ATIVOS"
 
         
 
@@ -31,6 +33,7 @@ class Main:
             (lambda: ETL_conj_info.ETL_conj(), name_rout_1),
             (lambda: ETL_relat_inadimp.ETL_inadimp(), name_rout_2),
             (lambda: ETL_relat_pagam.ETL_pagam(), name_rout_3)
+            (lambda: ETL_relat_pagam.ETL_pagam(), name_rout_4)
         ]
 
         return routines

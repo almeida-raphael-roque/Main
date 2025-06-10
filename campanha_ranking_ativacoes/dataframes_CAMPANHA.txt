@@ -1,0 +1,14 @@
+agora não é hora de aprender, agr é hora de rodar mano
+
+Transform variaveis
+
+
+PAI = df_ativacoes
+
+df_ativ_viavante - df_final_viav - df_final_viavante (tratamentos)
+df_ativ_stcoop - df_final_st - df_final_stcoop
+df_ativ_segtruck - df_final_seg df_final_segtruck
+
+>>>>df_ativacoes_dia_anterior = pd.concat([df_final_viavante, df_final_stcoop, df_final_segtruck])
+
+>>>>df_final_ativacoes = df_ativacoes(filtrado)
