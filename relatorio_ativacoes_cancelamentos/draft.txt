@@ -1,0 +1,66 @@
+resumo_periodo = data fds
+
+yest_date.strftime('%d/%m/%Y') = datas outros dias
+
+
+
+if today =! segunda:
+    whats_string = rf"intervalo dos dias {resumo_periodo} (final de semana)"
+
+else:
+    whats_string = rf"dia {yest_date.strftime('%d/%m/%Y')}"
+
+
+
+
+mensagem = 
+
+    Bom dia, pessoal!
+
+    Na imagem o resultado das placas ativadas e canceladas, referentes ao whats_string, nas 4 empresas.
+
+    Se surgir qualquer dúvida, estamos à disposição!
+
+
+essa mensagem vai ter que ser escrita, é bom que eu olho antes de mandar, então esquece isso
+
+
+COISAS A ACRESCENTAR NO PYTHON
+
+LOGS
+
+PARTE QUE APAGAVA O ANTERIOR
+
+
+acrescentei final de semana
+
+no w4 que é o RELATORIO
+
+E NO W3
+
+
+
+em imagem resumo o de excluir é
+
+      # Exclui o arquivo correspondente à data_antiga, se existir
+        if 'data_antiga' in locals():
+            image_path_antiga = os.path.join(
+                self.paths["img_output"], f'tabela_ativacoes_cancelamentos_{data_antiga.replace("/", "-")}.png'
+            )
+            if os.path.exists(image_path_antiga):
+                try:
+                    os.remove(image_path_antiga)
+                except Exception as e:
+                    print(f"Erro ao remover arquivo antigo: {image_path_antiga}. Erro: {e}")
+
+e o gráfico unidades é
+
+        # Exclui o arquivo do dia anterior (day before) com o mesmo nome, mas data do day before (dbf_yesterday_str)
+        dbf_yesterday = (self.yesterday_ts - pd.Timedelta(days=1)).date()
+        dbf_yesterday_str = dbf_yesterday.strftime('%d-%m-%Y').replace("/", "-")
+        dbf_image_path = os.path.join(img_dir, f'graficos_unidades_{dbf_yesterday_str}.png')
+        if os.path.isfile(dbf_image_path):
+            try:
+                os.remove(dbf_image_path)
+            except Exception as e:
+                print(f'Erro ao excluir o arquivo de imagem do dia anterior: {e}')
